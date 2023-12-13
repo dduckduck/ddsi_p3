@@ -11,6 +11,7 @@ class DB:
         except Exception as e:
             print(f"Error al establecer conexión:{e}")
             exit(-1)
+        self.cursor = conn.cursor
 
     #Generar bases de datos
     def crear_tablas(self):
@@ -20,7 +21,7 @@ class DB:
         for line in lines:
             if line:
                 try:
-                    conn.cursor.execute(line)
+                    cursor.execute(line)
                 except Exception as e:
                     print(f"Error al crear tabla clientes: {e}")
                     fail = True
@@ -41,8 +42,8 @@ class DB:
         savepoint = f"SP_{random.randint(0,99)}"
         cursor.execute(f"SAVEPOINT {savepoint}")
         try:
-            conn.cursor.executemany(query,clientes)
-            conn.cursor.executemany(query,propiedades)
+            cursor.executemany(query,clientes)
+            cursor.executemany(query,propiedades)
         except Exception as e:
             fail = True
             print(f"Ha habido un error al desplegar base de datos {e}")
@@ -57,7 +58,7 @@ class DB:
             lines = input.readlines()
         for line in lines:
             try:
-                conn.cursor.execute(line)
+                cursor.execute(line)
             except Exception as e:
                 print(f"Ha habido un error {e}")
                 break
@@ -68,7 +69,7 @@ class DB:
             lines = input.readlines()
         for line in lines:
            try:
-               conn.cursor.execute(line)
+               cursor.execute(line)
                tabla = from_db_cursor(cursor)
                nombre_tabla = line.split(' ')[-1].strip()
                print(f"Tabla: {nombre_tabla}")
@@ -76,5 +77,9 @@ class DB:
            except Exception as e:
                 print(f"Error al consultar las tablas: {e}")
 
-        
+    def close(self):
+        try:
+           self.conn.close()
+        except Exception as e:
+            print(f"Error al cerrar conexion : {e}")
 
