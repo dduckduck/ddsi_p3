@@ -1,3 +1,6 @@
-DROP TABLE Stock
-DROP TABLE Pedido
-DROP TABLE Detalle_Pedido
+DROP TABLE Oferta
+DROP TABLE PonerAlaVenta
+DROP TABLE CompraVenta
+DROP TABLE Servicio
+DROP TABLE Propiedad
+DROP TABLE Cliente

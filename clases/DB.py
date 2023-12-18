@@ -15,7 +15,7 @@ class DB:
 
     #Generar bases de datos
     def crear_tablas(self):
-        #Clientes
+        #Crear las tablas de la pase de datos
         with open("sql/create_tables.txt") as ifs:
             lines = ifs.readlines()
         for line in lines:
@@ -23,34 +23,27 @@ class DB:
                 try:
                     cursor.execute(line)
                 except Exception as e:
-                    print(f"Error al crear tabla clientes: {e}")
+                    print(f"Error al crear las tablas : {e}")
                     fail = True
         
     def llenar_tablas(self):
-
-        #Propiedades
-        num_entradas = 10
-        random.seed(69)
-        fail = False
-        clientes = propiedades = []
-        query = "INSERT INTO Cliente VALUES (:1, :2)"
-        #Clientes - Genero lista de tupla 
-        for i in range(0,num_entradas,1):
-            clientes.append((i,random.randint(0,999)))
-            propiedades.append((i,random.randint(0,999)))
-        
+        fail = False        
         savepoint = f"SP_{random.randint(0,99)}"
-        cursor.execute(f"SAVEPOINT {savepoint}")
-        try:
-            cursor.executemany(query,clientes)
-            cursor.executemany(query,propiedades)
-        except Exception as e:
-            fail = True
-            print(f"Ha habido un error al desplegar base de datos {e}")
-            cursor.execute(f"ROLLBACK TO SAVEPOINT {savepoint}")
-        finally:
-            if not fail:
-                conn.commit() #Puede lanzar excepcion
+
+        with open("sql/llenar_tables.txt") as ifs:
+            lines = ifs.readlines()
+        for line in lines:
+            if line:
+                try:
+                    cursor.execute(line)
+                except Exception as e:
+                    fail = True
+                    print(f"Ha habido un error al desplegar base de datos {e}")
+                    cursor.execute(f"ROLLBACK TO SAVEPOINT {savepoint}")
+
+                finally:
+                    if not fail:
+                    conn.commit() #Puede lanzar excepcion
         
 
     def borra_tablas(self):
