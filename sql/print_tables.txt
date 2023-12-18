@@ -1,0 +1,3 @@
+SELECT * FROM Stock
+SELECT * FROM Pedido
+SELECT * FROM Detalle_Pedido

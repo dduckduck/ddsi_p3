@@ -1,0 +1,3 @@
+DROP TABLE Stock
+DROP TABLE Pedido
+DROP TABLE Detalle_Pedido
