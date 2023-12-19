@@ -1,0 +1,52 @@
+{% extends 'cliente.html' %}
+
+{% block content %}
+    <h1>{% block title %} Dar de alta nuevo cliente {% endblock %}</h1>
+    <form method="post">
+        <p>
+            <label for="DNI">DNI</label>
+            <input type="text" name="DNI"
+                   placeholder="DNI Cliente">
+            </input>
+        </p>
+
+        <p>
+            <label for="CuentaBbancaria">Cuenta_bancaria</label>
+            <input type="text" name="Ceunta Bancaria"
+                   placeholder="Ceunta Bancaria Cliente">
+            </input>
+        </p>
+
+        <p>
+            <label for="Nombre">Nombre</label>
+            <input type="text" name="nombre"
+                   placeholder="Nombre Cliente">
+            </input>
+        </p>
+        
+        <p>
+            <label for="Apellidos">Apellidos</label>
+            <input type="text" name="Apellidos"
+                   placeholder="Apellidos Cliente">
+            </input>
+        </p>
+
+        <p>
+            <label for="Telefono">Telefono</label>
+            <input type="text" name="Telefono"
+                   placeholder="Telefono Cliente">
+            </input>
+        </p>
+
+        <p>
+            <label for="Direccion">Direccion</label>
+            <input type="text" name="Direccion"
+                   placeholder="Direccion Cliente">
+            </input>
+        </p>
+
+        <p>
+            <button type="submit">Submit</button>
+        </p>
+    </form>
+{% endblock %}

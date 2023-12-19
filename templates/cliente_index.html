@@ -1,0 +1,13 @@
+{% extends 'cliente.html' %}
+
+{% block content %}
+    <h1>{% block title %} Clientes {% endblock %}</h1>
+    {% for cliente in clientes %}
+        <div class='cliente'>
+            <h3>#{{ book[0] }} - {{ book[1] }} BY {{ book[2] }}</h3>
+            <i><p>({{ book[3] }} pages)</p></i>
+            <p class='review'>{{ book[4] }}</p>
+            <i><p>Added {{ book[5] }}</p></i>
+        </div>
+    {% endfor %}
+{% endblock %}
