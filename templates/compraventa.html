@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} {% endblock %}- Compra & Venta</title>
+    <style>
+        nav a {
+            color: #d64161;
+            font-size: 3em;
+            margin-left: 50px;
+            text-decoration: none;
+        }
+
+        .oferta {
+            padding: 20px;
+            margin: 10px;
+            background-color: #f7f4f4;
+        }
+
+        .compraventa {
+            padding: 20px;
+            margin: 10px;
+            background-color: #f7f4f4;
+        }
+
+        .alaventa {
+            padding: 20px;
+            margin: 10px;
+            background-color: #f7f4f4;
+        }
+
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="{{ url_for('base') }}">Home</a>
+        <a href="{{ url_for('oferta') }}">Nueva oferta</a >
+        <a href="{{ url_for('compraventa') }}">Nuev compra venta</a >
+        <a href="{{ url_for('alaventa') }}">Nueva venta</a >
+        <a href="#">About</a>
+    </nav>
+    <hr>
+    <div class="content">
+        {% block content %} {% endblock %}
+    </div>
+</body>
+</html>

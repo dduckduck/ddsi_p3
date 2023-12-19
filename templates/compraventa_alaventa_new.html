@@ -1,0 +1,31 @@
+{% extends 'compraventa.html' %}
+
+{% block content %}
+    <h1>{% block title %} Nueva venta {% endblock %}</h1>
+    <form method="post">
+        <p>
+            <label for="DNI">DNI</label>
+            <input type="text" name="DNI"
+                   placeholder="DNI Cliente">
+            </input>
+        </p>
+
+        <p>
+            <label for="ID">ID</label>
+            <input type="text" name="ID"
+                   placeholder="ID Propiedad">
+            </input>
+        </p>
+
+        <p>
+            <label for="Precio">Precio</label>
+            <input type="text" name="Precio"
+                   placeholder="Precio oferta">
+            </input>
+        </p>
+        
+        <p>
+            <button type="submit">Submit</button>
+        </p>
+    </form>
+{% endblock %}

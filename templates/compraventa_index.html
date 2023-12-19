@@ -1,0 +1,33 @@
+{% extends 'compraventa.html' %}
+
+{% block content %}
+    <h1>{% block title %} Ofertas {% endblock %}</h1>
+    {% for oferta in ofertas %}
+        <div class='oferta'>
+            <i><p>(Cliente con DNI: {{ oferta[0] }} proppne oferta a propiedad con ID: {{ oferta[1]}})</p></i>
+            <i><p>(Precio de la oferta: {{ oferta[2] }} )</p></i>
+        </div>
+    {% endfor %}
+{% endblock %}
+
+{% block content %}
+    <h1>{% block title %} A la venta {% endblock %}</h1>
+    {% for alaventa in alaventas %}
+        <div class='alaventa'>
+            <i><p>(Cliente con DNI: {{ alaventa[0] }} pone en venta la propiedad con ID: {{ alaventa[1]}})</p></i>
+            <i><p>(Precio de la oferta: {{ alaventa[2] }} )</p></i>
+        </div>
+    {% endfor %}
+{% endblock %}
+
+{% block content %}
+    <h1>{% block title %} Compra Venta {% endblock %}</h1>
+    {% for compraventa in compraventas %}
+        <div class='compraventa'>
+            <i><p>(Cliente con DNI: {{ compraventa[0] }} y Cliente con DNI: {{ compraventa[1]}}])</p></i>
+            <i><p>(Llegan al acuerdo de la propiedad con ID: {{ compraventa[3] }} )</p></i>
+            <i><p>(Precio de la oferta: {{ compraventa[4] }} )</p></i>
+        </div>
+    {% endfor %}
+{% endblock %}
+
