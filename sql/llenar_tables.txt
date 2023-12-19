@@ -3,20 +3,15 @@ INSERT INTO Cliente(DNI, Cuenta_bancaria, Nombre, Apellidos, Tel, Direccion) VAL
 INSERT INTO Cliente(DNI, Cuenta_bancaria, Nombre, Apellidos, Tel, Direccion) VALUES ('456456456', '78978954122222' , 'Maria' , 'Solero Cisneros', '645123789', 'Avenida avenida 196')
 INSERT INTO Cliente(DNI, Cuenta_bancaria, Nombre, Apellidos, Tel, Direccion) VALUES ('654654654', '11111189329392' , 'Isabel' , 'Fuentes Vega', '699199198', 'Camino camino 13')
 INSERT INTO Cliente(DNI, Cuenta_bancaria, Nombre, Apellidos, Tel, Direccion) VALUES ('789789789', '33339299356392' , 'Jose' , 'Ruiz Larrubia', '711111101', 'Alameda alameda 96')
-
-INSERT INTO Propiedad(Ref_catastral, Tamano, N_habitaciones, N_baños, Garaje, Terraza, Certificado, Localizacion, CP, Estado, Disponibilidad, DNI_propietario) VALUES ('12345678912345679812', '150' , '3' , '1', 'No', 'Si', 'B', 'Granada', '18000', 'Nuevo', 'Disponible', '123123123')
-INSERT INTO Propiedad(Ref_catastral, Tamano, N_habitaciones, N_baños, Garaje, Terraza, Certificado, Localizacion, CP, Estado, Disponibilidad, DNI_propietario) VALUES ('45678912345678912345', '70' , '1' , '1', 'Si', 'Si', 'A', 'Granada', '18001', 'Reformado', 'Disponible', '123123123')
-INSERT INTO Propiedad(Ref_catastral, Tamano, N_habitaciones, N_baños, Garaje, Terraza, Certificado, Localizacion, CP, Estado, Disponibilidad, DNI_propietario) VALUES ('78945612378945613278', '225' , '4' , '2', 'Si', 'No', 'A', 'Granada', '18015', 'Nuevo', 'Disponible', '789789789')
-INSERT INTO Propiedad(Ref_catastral, Tamano, N_habitaciones, N_baños, Garaje, Terraza, Certificado, Localizacion, CP, Estado, Disponibilidad, DNI_propietario) VALUES ('96385274196385200147', '100' , '2' , '2', 'No', 'No', 'E', 'Granada', '18026', 'Reformado', 'Disponible', '798789789')
-
+INSERT INTO Propiedad(Ref_catastral, Tamano, N_habitaciones, N_banos, Garaje, Terraza, Certificado, Localizacion, CP, Estado, Disponibilidad, DNI_propietario) VALUES ('12345678912345679812', '150' , '3' , '1', 'No', 'Si', 'B', 'Granada', '18000', 'Nuevo', 'Disponible', '123123123')
+INSERT INTO Propiedad(Ref_catastral, Tamano, N_habitaciones, N_banos, Garaje, Terraza, Certificado, Localizacion, CP, Estado, Disponibilidad, DNI_propietario) VALUES ('45678912345678912345', '70' , '1' , '1', 'Si', 'Si', 'A', 'Granada', '18001', 'Reformado', 'Disponible', '123123123')
+INSERT INTO Propiedad(Ref_catastral, Tamano, N_habitaciones, N_banos, Garaje, Terraza, Certificado, Localizacion, CP, Estado, Disponibilidad, DNI_propietario) VALUES ('78945612378945613278', '225' , '4' , '2', 'Si', 'No', 'A', 'Granada', '18015', 'Nuevo', 'Disponible', '789789789')
+INSERT INTO Propiedad(Ref_catastral, Tamano, N_habitaciones, N_banos, Garaje, Terraza, Certificado, Localizacion, CP, Estado, Disponibilidad, DNI_propietario) VALUES ('96385274196385200147', '100' , '2' , '2', 'No', 'No', 'E', 'Granada', '18026', 'Reformado', 'Disponible', '789789789')
 INSERT INTO Oferta(DNI, ID, Precio) VALUES ('123123123', '1000000000', '650000')
 INSERT INTO Oferta(DNI, ID, Precio) VALUES ('321321321', '1000000001', '9999999')
-
 INSERT INTO PonerAlaVenta(DNI, ID, Precio) VALUES ( '456456456', '1000000001', '5555555' ) 
 INSERT INTO PonerAlaVenta(DNI, ID, Precio) VALUES ( '654654654', '1000000003', '222333222' ) 
-
 INSERT INTO CompraVenta(DNI_Propietario , DNI_Comprador, ID, Precio ) VALUES ('123123123', '456456456', '1000000001', '5555555')
-INSERT INTO CompraVenta(DNI_Propietario , DNI_Comprador, ID, Precio ) VALUES ('798789798', '456456456', '1000000003', '222333222')
-
-INSERT INTO Servicio(DNI, ID, Estado_Pago, Estado, Tipo_Servicio) VALUES ('123123123', '1000000001', 'ESTADO', 'SERVICIO')
-INSERT INTO Servicio(DNI, ID, Estado_Pago, Estado, Tipo_Servicio) VALUES ('123123123', '1000000002', 'ESTADO', 'SERVICIO')
+INSERT INTO CompraVenta(DNI_Propietario , DNI_Comprador, ID, Precio ) VALUES ('789789789', '456456456', '1000000003', '222333222')
+INSERT INTO Servicio(DNI, ID, Estado_Pago, Estado, Tipo_Servicio) VALUES ('123123123', '1000000001', 'PAGO', 'ESTADO', 'SERVICIO')
+INSERT INTO Servicio(DNI, ID, Estado_Pago, Estado, Tipo_Servicio) VALUES ('123123123', '1000000002', 'PAGO', 'ESTADO', 'SERVICIO')
