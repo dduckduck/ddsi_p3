@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} {% endblock %}- Propiedades</title>
+    <style>
+        nav a {
+            color: #d64161;
+            font-size: 3em;
+            margin-left: 50px;
+            text-decoration: none;
+        }
+
+        .propiedad {
+            padding: 20px;
+            margin: 10px;
+            background-color: #f7f4f4;
+        }
+
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="{{ url_for('base') }}">Home</a>
+        <a href="{{ url_for('propiedad_new') }}">Nueva propiedad</a >
+        <a href="#">About</a>
+    </nav>
+    <hr>
+    <div class="content">
+        {% block content %} {% endblock %}
+    </div>
+</body>
+</html>

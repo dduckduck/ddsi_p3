@@ -4,10 +4,11 @@
     <h1>{% block title %} Clientes {% endblock %}</h1>
     {% for cliente in clientes %}
         <div class='cliente'>
-            <h3>#{{ book[0] }} - {{ book[1] }} BY {{ book[2] }}</h3>
-            <i><p>({{ book[3] }} pages)</p></i>
-            <p class='review'>{{ book[4] }}</p>
-            <i><p>Added {{ book[5] }}</p></i>
+            <h3>#{{ cliente[2] }}, {{ cliente[3] }} </h3>
+            <i><p>(Telefono: {{ cliente[4] }})</p></i>
+            <i><p>(DNI : {{ cliente[0] }} )</p></i>
+            <i><p>(Cuenta Bancaria: {{ cliente[2] }})</p></i>            
+            <i><p>(Direccion: {{ cliente[5] }} pages)</p></i>
         </div>
     {% endfor %}
 {% endblock %}

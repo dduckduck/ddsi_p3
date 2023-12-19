@@ -1,0 +1,94 @@
+{% extends 'propiedad.html' %}
+
+{% block content %}
+    <h1>{% block title %} Dar de alta nueva propiedad {% endblock %}</h1>
+    <form method="post">
+        <p>
+            <label for="Ref_catrastal">Referencia catrastal</label>
+            <input type="text" name="Ref_catrastal"
+                   placeholder="Referencia catrastal propiedad">
+            </input>
+        </p>
+
+        <p>
+            <label for="Tamano">Tamano</label>
+            <input type="number" name="Tamano"
+                   placeholder="Tamano propiedad">
+            </input>
+        </p>
+
+        <p>
+            <label for="N_habitaciones">Numero de habitaciones</label>
+            <input type="number" name="N_habitaciones"
+                   placeholder="Numero de habitaciones propiedad">
+            </input>
+        </p>
+        
+        <p>
+            <label for="N_banos">Numero de banos</label>
+            <input type="number" name="N_banos"
+                   placeholder="Numero de banos propiedad">
+            </input>
+        </p>
+
+        <p>
+            <label for="Garaje">Garaje</label>
+            <input type="text" name="Garaje"
+                   placeholder="Garaje propiedad">
+            </input>
+        </p>
+
+        <p>
+            <label for="Terraza">Terraza</label>
+            <input type="text" name="Terraza"
+                   placeholder="Terraza propiedad">
+            </input>
+        </p>
+
+        <p>
+            <label for="Certificado">Certificado Electrico</label>
+            <input type="text" name="Certificado"
+                   placeholder="Certificado propiedad">
+            </input>
+        </p>
+
+        <p>
+            <label for="Localizacion">Localizacion</label>
+            <input type="text" name="Localizacion"
+                   placeholder="Localizacion propiedad">
+            </input>
+        </p>
+
+        <p>
+            <label for="CP">Codigo postal</label>
+            <input type="text" name="CP"
+                   placeholder="Codigo postal propiedad">
+            </input>
+        </p>
+
+        <p>
+            <label for="Estado">Estado</label>
+            <input type="text" name="Estado"
+                   placeholder="Estado propiedad">
+            </input>
+        </p>
+
+        <p>
+            <label for="Disponibilidad">Disponibilidad</label>
+            <input type="text" name="Disponibilidad"
+                   placeholder="Disponibilidad propiedad">
+            </input>
+        </p>
+
+        <p>
+            <label for="DNI_propietario">DNI propietario</label>
+            <input type="text" name="DNI_propietario"
+                   placeholder="DNI propietario propiedad">
+            </input>
+        </p>
+
+        <p>
+            <button type="submit">Submit</button>
+        </p>
+    </form>
+{% endblock %}

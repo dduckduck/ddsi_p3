@@ -1,0 +1,20 @@
+{% extends 'propiedad.html' %}
+
+{% block content %}
+    <h1>{% block title %} Propiedades {% endblock %}</h1>
+    {% for propiedad in propiedades %}
+        <div class='propiedad'>
+            <h3>#ID: {{ propiedad[0] }} </h3>
+            <i><p>(Referencia catrastal: {{ propiedad[1] }})</p></i>
+            <i><p>(Tamaño : {{ propiedad[2] }} )</p></i>
+            <i><p>(Nº habitaciones: {{ propiedad[3] }}  Nº baños: {{ propiedad[4]}})</p></i>            
+            <i><p>(Garaje: {{ propiedad[5] }}   Terraza: {{ propiedad[6]}})</p></i>            
+            <i><p>(Certificado Electrico: {{ propiedad[7] }})</p></i> 
+            <i><p>(Direccion: {{ propiedad[8] }})</p></i>
+            <i><p>(Codigo postal: {{ propiedad[9] }})</p></i>   
+            <i><p>(Estado: {{ propiedad[10] }} )</p></i>
+            <i><p>(Disponibilidad: {{ propiedad[11] }})</p></i>
+            <i><p>(Dni propietario: {{ propiedad[12] }})</p></i>                    
+        </div>
+    {% endfor %}
+{% endblock %}
