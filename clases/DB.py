@@ -1,85 +1,145 @@
 import os
 import oracledb
+from flask import Flask, render_template, request, url_for, redirect
 
-CS = "oracle0.ugr.es:1521/practbd.oracle0.ugr.es"
-class DB:
-    def __init__():
-        usr = os.environ['DB_USERNAME']
-        pwd = os.environ['DB_PASSWORD']
-        conn = None 
-        
-        try:
-            conn = oracledb.connect(user=usr,password=pwd,dsn=CS)
+cs = "oracle0.ugr.es:1521/practbd.oracle0.ugr.es"
+usr = pwd = os.environ['DB_USERNAME']
+
+app = Flask(__name__)
+
+try:
+    conn = oracledb.connect(user=usr,password=pwd,dsn=cs)
+except Exception as e:
+    print(f"Error al establecer conexión:{e}")
+    #:exit(-1)
+
+
+@app.route('/')
+def home():
+    #display the home 
+    return render_template('home.html')
+
+@app.route('/cliente/')
+def index():
+    cur = conn.cursor()
+    cliente = "Sin datos"
+    try:
+        cur.execute('SELECT * FROM Cliente')
+        cliente = cur.fetchall()
+    except Exception as e:
+        print(f"Error al consultar clientes: {e}")
+    return render_template('cliente.html', cliente=cliente)
+
+
+@app.route('/cliente/create/', methods=('GET', 'POST'))
+def create():
+    if request.method == 'POST':
+        #datos de cliente
+        cur = conn.cursor()
+        #Rollback seria conveniente
+        try: 
+            #insertar datos para nuevo cliente 
+            cur.execute() 
         except Exception as e:
-            print(f"Error al establecer conexión:{e}")
-            exit(-1)
-        cursor = conn.cursor
+            print(f"Error al insertar cliente {e}")
+        return redirect(url_for('cliente'))
 
-    #Generar bases de datos
-        def crear_tablas(self):
-            #Crear las tablas de la pase de datos
-            with open("sql/create_tables.txt") as ifs:
-                lines = ifs.readlines()
-            for line in lines:
-                if line:
-                    try:
-                        cursor.execute(line)
-                    except Exception as e:
-                        print(f"Error al crear las tablas : {e}")
-                        fail = True
-        
-        def llenar_tablas(self):
-            fail = False        
-            savepoint = f"SP_{random.randint(0,99)}"
+    return render_template('cliente_new.html')
 
-            with open("sql/llenar_tables.txt") as ifs:
-                lines = ifs.readlines()
-            for line in lines:
-                if line:
-                    try:
-                        cursor.execute(line)
-                    except Exception as e:
-                        fail = True
-                        print(f"Ha habido un error al desplegar base de datos {e}")
-                        cursor.execute(f"ROLLBACK TO SAVEPOINT {savepoint}")
-                    finally:
-                        if not fail:
-                        #conn.commit() #Puede lanzar excepcion
-                        
-        conn.commit()
-        
 
-    #def borra_tablas(self):
-    #    with open("sql/drop_tables.txt",'r') as input:
-    #        lines = input.readlines()
-    #    for line in lines:
-    #        try:
-    #            cursor.execute(line)
-    #        except Exception as e:
-    #            print(f"Ha habido un error {e}")
-    #            break
+@app.route('/propiedad/')
+def index():
+    cur = conn.cursor()
+    propiedad = "Sin datos"
+    try:
+        cur.execute('SELECT * FROM Propiedad')
+        propiedad = cur.fetchall()
+    except Exception as e:
+        print(f"Error al consultar pro`popriedad: {e}")
+    return render_template('propiedad.html', propiedad=propiedad)
 
-               
-                
-    #def imprimir_tablas():
-    #    with open("sql/print_tables.txt",'r') as input:
-    #        lines = input.readlines()
-    #    for line in lines:
-    #       try:
-    #           cursor.execute(line)
-    #           tabla = from_db_cursor(cursor)
-    #           nombre_tabla = line.split(' ')[-1].strip()
-    #           print(f"Tabla: {nombre_tabla}")
-    #           print(f"{tabla}\n")
-    #       except Exception as e:
-    #            print(f"Error al consultar las tablas: {e}")
 
-    #def close(self):
-    #    try:
-    #       self.conn.close()
-    #    except Exception as e:
-    #        print(f"Error al cerrar conexion : {e}")
+@app.route('/propiedad/create/', methods=('GET', 'POST'))
+def create():
+    if request.method == 'POST':
+        Ref_catrastal = request.form['Ref_catrastal']
+        Tamano = int(request.form['Tamanno'])
+        N_habitaciones = int(request.form['N_habitaciones'])
+        N_banos = int(request.form['N_banos'])
+        Garaje = request.form['Garaje']
+        Terraza = request.form['Terraza']
+        Certificado = request.form['Certificado']
+        Localizacion = request.form['Localizacion']
+        CP = request.form['CP']
+        Estado = request.form['Estado']
+        Disponibilidad = request.form['Disponibilidad']
+        DNI_propietario = request.form['DNI_propietario']
 
-    
-    cursor.close()
-    conn.close()
+        cur = conn.cursor()
+        try: 
+            cur.execute('INSERT INTO Propiedad(Ref_catastral, Tamano, N_habitaciones, N_banos, Garaje, Terraza, Certificado, Localizacion, CP, Estado, Disponibilidad, DNI_propietario)'
+                        'VALUES (:1, :2, :3 , :4, :5, :6, :7, :8, :9, :10, :11, :12)', 
+                        (Ref_catrastal, Tamano, N_habitaciones, N_banos, Garaje, Terraza, Certificado, Localizacion, CP, Estado, Disponibilidad, DNI_propietario))
+            
+            conn.comit()
+        except Exception as e:
+            print(f"Error al insertar propiedad {e}")
+        return redirect(url_for('propiedad'))
+
+    return render_template('propiedad_new.html')
+
+#COMPRA / VENTA 
+@app.route('/cliente/')
+def index():
+    cur = conn.cursor()
+    cliente = "Sin datos"
+    try:
+        cur.execute('SELECT * FROM Cliente')
+        cliente = cur.fetchall()
+    except Exception as e:
+        print(f"Error al consultar clientes: {e}")
+    return render_template('cliente.html', cliente=cliente)
+
+
+@app.route('/cliente/create/', methods=('GET', 'POST'))
+def create():
+    if request.method == 'POST':
+        #datos de cliente
+        cur = conn.cursor()
+        #Rollback seria conveniente
+        try: 
+            conn.execute()
+            #insertar datos para nuevo cliente 
+        except Exception as e:
+            print(f"Error al insertar cliente {e}")
+        return redirect(url_for('cliente'))
+
+    return render_template('cliente_new.html')
+
+#SERVICIO 
+@app.route('/cliente/')
+def index():
+    cur = conn.cursor()
+    cliente = "Sin datos"
+    try:
+        cur.execute('SELECT * FROM Cliente')
+        cliente = cur.fetchall()
+    except Exception as e:
+        print(f"Error al consultar clientes: {e}")
+    return render_template('cliente.html', cliente=cliente)
+
+
+@app.route('/cliente/create/', methods=('GET', 'POST'))
+def create():
+    if request.method == 'POST':
+        #datos de cliente
+        cur = conn.cursor()
+        #Rollback seria conveniente
+        try: 
+            conn.execute()
+            #insertar datos para nuevo cliente 
+        except Exception as e:
+            print(f"Error al insertar cliente {e}")
+        return redirect(url_for('cliente'))
+
+    return render_template('cliente_new.html')
